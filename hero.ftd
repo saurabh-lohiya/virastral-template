@@ -1,34 +1,163 @@
--- import: fifthtry.github.io/doc-site-typography as typo
 -- import: fifthtry.github.io/raleway-typography as typo
+-- import: fifthtry.github.io/virastral-template/static
+
+-- integer $width: 1280
 
 
+-- hero: For Brave Entrepreneurs Shooting for the Stars
+cta-text: Get In Touch
 
+VirASTRAL is a founder-led early stage startup studio focused on helping fellow founders build world-shaping Generative AI, Web3 and AI SaaS companies from India and other emerging markets. We are extremely selective, looking to provide the needed mentorship, connections and funding for innovation obsessed founding teams creating disruptive and delightful products.
 
-
-
--- hero:
-
-
-
-
+-- end: hero
 
 
 -- component hero:
+caption title:
+string cta-text:
+body body:
+integer width: $width
 
-
-
+-- ftd.column:
+types: $typo.types
+width: fill-container
+background.solid: $inherited.colors.background.base
+align-content: center
+height: fill-container
 
 -- ftd.column:
 width: fill-container
-height: fill-container
-types: $typo.types
-background.solid: $inherited.colors.background.base
+max-width.fixed.px: $hero.width 
+align-content if { ftd.device == "mobile" }: center
 
--- ftd.text: This is typo
+-- ftd.column:
+width.fixed.percent if { ftd.device == "desktop" }: 70
+width.fixed.percent if { ftd.device == "mobile" }: 80
+align-content if { ftd.device == "mobile" }: center
+
+-- ftd.text: $hero.title
 role: $inherited.types.heading-hero
 color: $inherited.colors.text-strong
+text-align if { ftd.device == "mobile" }: center
+region: h1
 
+-- ftd.text:
+role: $inherited.types.copy-regular
+color: $inherited.colors.text-strong
+margin-top.rem: 1.25
+text-align if { ftd.device == "mobile" }: center
+
+$hero.body
+
+-- cta-button: $hero.cta-text
+border-radius: 5
+text-color: $inherited.colors.text-strong
+bg-color: $inherited.colors.custom.seven
+marginTop: 2.5
+padding-vertical: 13
+padding-horizontal: 40
+
+-- end: ftd.column
+
+-- end: ftd.column
 
 -- end: ftd.column
 
 -- end: hero
+
+
+
+
+
+
+
+
+
+
+
+
+-- component cta-button:
+caption title:
+optional string role: tertiary
+ftd.color bg-color: transparent
+ftd.color text-color: black
+integer border-radius: 30
+optional string link: /
+optional boolean medium: false
+boolean show-arrow: false
+optional ftd.image-src cta-icon:
+optional integer width:
+boolean align-center: false
+integer padding-vertical: 10
+integer padding-horizontal: 28
+decimal marginTop: 0
+boolean transparent: false
+integer border-width: 1
+optional ftd.image-src src:
+
+-- ftd.column:
+align-self if { cta-button.align-center }: center
+margin-top.rem: $cta-button.marginTop
+
+-- ftd.row:
+if: {!cta-button.medium}
+width.fixed.px if { cta-button.width != NULL}: $cta-button.width
+spacing.fixed.px: 10
+link if { cta-button.link != NULL }: $cta-button.link
+background.solid if { cta-button.role == "primary" }: $inherited.colors.cta-primary.base
+background.solid if { cta-button.role == "secondary" }: $inherited.colors.cta-secondary.base
+background.solid: $cta-button.bg-color
+border-radius.px: $cta-button.border-radius
+padding-vertical.px: $cta-button.padding-vertical
+padding-horizontal.px: $cta-button.padding-horizontal
+align-content: center
+
+-- ftd.text: $cta-button.title
+role: $inherited.types.button-large
+color if { cta-button.role == "secondary" }: $inherited.colors.cta-secondary.text
+color if { cta-button.role == "primary" }: $inherited.colors.cta-primary.text
+color: $cta-button.text-color
+white-space: nowrap
+text-align: center
+
+-- ftd.image:
+if: { cta-button.src != NULL }
+src: $cta-button.src
+width: auto
+height: auto
+align-self: center
+
+-- end: ftd.row
+
+-- ftd.row:
+if: {cta-button.medium}
+width.fixed.px if { cta-button.width != NULL}: $cta-button.width
+spacing.fixed.px: 10
+link if { cta-button.link != NULL }: $cta-button.link
+background.solid if { cta-button.role == "primary" }: $inherited.colors.cta-primary.base
+background.solid if { cta-button.role == "secondary" }: $inherited.colors.cta-secondary.base
+border-radius.px: 30
+padding-vertical.px: $cta-button.padding-vertical
+padding-horizontal.px: $cta-button.padding-horizontal
+align-content: center
+
+-- ftd.text: $cta-button.title
+role: $inherited.types.button-large
+color if { cta-button.role == "secondary" }: $inherited.colors.cta-secondary.text
+color if { cta-button.role == "primary" }: $inherited.colors.cta-primary.text
+color: $cta-button.text-color
+white-space: nowrap
+text-align: center
+
+-- ftd.image:
+if: { cta-button.show-arrow }
+src: $cta-button.src
+width: auto
+height: auto
+align-self: center
+
+-- end: ftd.row
+
+-- end: ftd.column
+
+-- end: cta-button
