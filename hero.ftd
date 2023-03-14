@@ -1,1 +1,34 @@
-hero.ftd
+-- import: fifthtry.github.io/doc-site-typography as typo
+-- import: fifthtry.github.io/raleway-typography as typo
+
+
+
+
+
+
+-- hero:
+
+
+
+
+
+
+-- component hero:
+
+
+
+
+-- ftd.column:
+width: fill-container
+height: fill-container
+types: $typo.types
+background.solid: $inherited.colors.background.base
+
+-- ftd.text: This is typo
+role: $inherited.types.heading-hero
+color: $inherited.colors.text-strong
+
+
+-- end: ftd.column
+
+-- end: hero
